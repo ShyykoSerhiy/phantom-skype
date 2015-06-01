@@ -1,0 +1,2 @@
+# PhantomSkype
+Unofficial Skype API.
