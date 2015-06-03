@@ -5,7 +5,7 @@ io.on('connection', function (socket) {
     socket.on('initialized', function (data) {
         console.log('Everything is initialized now. We can send and receive messages.');
         socket.emit('message', JSON.stringify({
-            contact: 'Stanley Shyiko',//fixme
+            contact: 'SomeContactName',
             message: prefix + 'This is test message'
         }))
     });

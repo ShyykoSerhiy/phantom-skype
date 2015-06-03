@@ -1,7 +1,7 @@
 {
   "name": "phantomskype",
   "version": "0.0.1",
-  "description": "Unnoficial skype api",
+  "description": "Unnoficial skype api written with phantomjs.",
   "main": "skype.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
