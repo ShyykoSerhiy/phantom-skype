@@ -1,0 +1,26 @@
+{
+  "name": "phantomskype",
+  "version": "0.0.1",
+  "description": "Unnoficial skype api",
+  "main": "skype.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShyykoSerhiy/PhantomSkype.git"
+  },
+  "keywords": [
+    "phantom",
+    "skype"
+  ],
+  "author": "shyyko.serhiy@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShyykoSerhiy/PhantomSkype/issues"
+  },
+  "homepage": "https://github.com/ShyykoSerhiy/PhantomSkype",
+  "dependencies": {
+    "phantom-socketio": "0.0.2"
+  }
+}
