@@ -7,19 +7,14 @@ var indexJsDirectoryPath = simpleJsPath.substring(0, simpleJsPath.lastIndexOf(fs
     + fs.separator + 'node_modules'
     + fs.separator + 'phantom-socketio';
 
-phantomSocket.initialize(indexJsDirectoryPath, 'http://localhost:3000', function () {
+phantomSocket.initialize(indexJsDirectoryPath, system.args[1], function () {
     phantomSocket.on('initialize', function (credentials) {
         credentials = JSON.parse(credentials);
-        console.log(credentials.username, credentials.password);
         skype.phantomSkypeApi.initialize(credentials.username, credentials.password, function () {
-                console.log('initialized callback');
                 phantomSocket.emit('initialized', '');
             },
-            function (messages) {
-                console.log('message callback');
-                messages.forEach(function (message) {
-                    phantomSocket.emit('message', message)
-                });
+            function (message) {
+                phantomSocket.emit('message', message)
             }
         );
     });
