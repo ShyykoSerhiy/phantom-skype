@@ -1,7 +1,12 @@
 var io = require('socket.io')();
+var username = process.argv[2];
+var password = process.argv[3];
+if (!username || !password){
+    throw new Error('Username and password should be provided as commandline arguments!');
+}
 io.on('connection', function (socket) {
     console.log('a user connected');
-    socket.on('initialized', function (data) {
+    socket.on('initialized', function () {
         console.log('Everything is initialized now. We can send and receive messages.');
         socket.on('message', function (data) {
             console.log(data);
@@ -15,7 +20,7 @@ io.on('connection', function (socket) {
         console.log('phantom disconnected');
     });
 
-    socket.emit('initialize', JSON.stringify({username: 'aaa.zzz@bbb.yyy', password: 'password'}));
+    socket.emit('initialize', JSON.stringify({username: username, password: password}));
 });
 io.listen(3000);
 
