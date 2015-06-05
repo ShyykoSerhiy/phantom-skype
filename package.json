@@ -1,5 +1,5 @@
 {
-  "name": "phantomskype",
+  "name": "phantom-skype",
   "version": "0.0.4",
   "description": "Unnoficial skype api written with phantomjs.",
   "main": "skype.js",
