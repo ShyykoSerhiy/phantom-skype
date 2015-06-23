@@ -15,3 +15,8 @@ node nodeDemo.js username password
 
 After 'Everything is initialized now. We can send and receive messages.' appears in console any message you receive 
 in your Skype will be automatically replied.
+
+##Disclaimer 
+This project heavily relies on OneDrive's Skype implementation. If Microsoft Corporation decides to remove Skype
+implementation from OneDrive(or significantly change it) PhantomSkype might not be in working state. Therefore it's not
+recommended to use it in any critical part of production code. In fact it's not recommended to use it in production at all.

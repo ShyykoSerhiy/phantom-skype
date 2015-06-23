@@ -19,7 +19,8 @@
                 console.log(msg.log)
             }
         } catch (e) {
-            console.log("Error parsing msg " + msg);
+            //nothing to do here 
+            //console.log("Error parsing msg " + msg);
         }
     };
     page.onLoadFinished = function (status) {
@@ -70,28 +71,6 @@
 
                     window.Microsoft.Live.Messenger.ConversationCollection = extendedConversationCollection;
                     return true;
-                },
-
-                /**
-                 * Clicks on button to open skype(if it exists on page)
-                 * @returns {boolean} true if button to open skype is present and was clicked
-                 */
-                tryOpenSkype: function () {
-                    function triggerMouseEvent(node, eventType) {
-                        var clickEvent = document.createEvent('MouseEvents');
-                        clickEvent.initEvent(eventType, true, true);
-                        node.dispatchEvent(clickEvent);
-                    }
-
-                    var element = document.querySelector(':not(.c_md).c-NavItem.c_hiconm a');
-                    if (element) {
-                        console.log(JSON.stringify({
-                            log: "Skype opened."
-                        }));
-                        triggerMouseEvent(element, "mousedown");
-                        this.isSkypeOpened = true;
-                    }
-                    return this.isSkypeOpened;
                 },
 
                 /**
@@ -168,11 +147,6 @@
                 return window.SkypeApi.isSkypeInitialized;
             });
         },
-        tryOpenSkype: function () {
-            return page.evaluate(function () {
-                return window.SkypeApi.tryOpenSkype();
-            });
-        },
         tryInitializeSkype: function () {
             return page.evaluate(function () {
                 return window.SkypeApi.tryInitializeSkype();
@@ -223,23 +197,19 @@
                 } else {
                     return;
                 }
-                var openSkypeInterval = setInterval(function () {
-                    if (phantomSkypeApi.tryOpenSkype()) { //TODO fail if maxRetry reached 
-                        clearInterval(openSkypeInterval);
-                        var initializeSkypeInterval = setInterval(function () {
-                            var skypeInitialized = phantomSkypeApi.tryInitializeSkype();
-                            if (skypeInitialized) {
-                                clearInterval(initializeSkypeInterval);
-                                console.log("Skype initialized. Ready to go.");
+                var initializeSkypeInterval = setInterval(function () {
+                    var skypeInitialized = phantomSkypeApi.tryInitializeSkype();
+                    if (skypeInitialized) {
+                        clearInterval(initializeSkypeInterval);
+                        console.log("Skype initialized. Ready to go.");
 
-                                if (phantomSkypeApi.initializedCallback) {
-                                    phantomSkypeApi.initializedCallback();
-                                }
-                                //Skype is ready
-                            }
-                        }, 5000)
+                        if (phantomSkypeApi.initializedCallback) {
+                            phantomSkypeApi.initializedCallback();
+                        }
+                        //Skype is ready
                     }
-                }, 5000);
+                }, 5000)
+                
             }, 500);
         }
     };
