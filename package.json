@@ -1,6 +1,6 @@
 {
   "name": "phantom-skype",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unofficial Skype api written with phantomjs.",
   "main": "skype.js",
   "scripts": {

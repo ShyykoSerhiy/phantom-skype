@@ -170,7 +170,7 @@
             checkStatus('Login', page, status);
             delete steps['https://login.live.com']; //only once
             page.evaluate(function (username, password) {
-                document.querySelector('input[name="login"]').value = username; 
+                document.querySelector('input[name="loginfmt"]').value = username; 
                 document.querySelector('input[name="passwd"]').value = password;
                 document.querySelector('input[name="SI"]').click();
                 //todo Keep me signed in?
