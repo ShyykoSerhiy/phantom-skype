@@ -1,3 +1,6 @@
+#[DEPRECATED]
+This project is no longer maintained. Have a look at https://github.com/ShyykoSerhiy/skyweb instead.
+
 # PhantomSkype
 Unofficial Skype API.
 
